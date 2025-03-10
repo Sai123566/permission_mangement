@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vishnu Institute of Technology</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #0D1117;
+      color: #E6EDF3;
+    }
+
+    /* Navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(13, 17, 23, 0.95);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #58A6FF;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    /* Common Button Styling */
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      color: #fff;
+    }
+
+    /* Student Button */
+    .nav-links .student {
+      background: #238636; /* Green */
+      border: 2px solid #238636;
+    }
+
+    .nav-links .student:hover {
+      background: #2EA043;
+      transform: scale(1.05);
+    }
+
+    /* Admin Button */
+    .nav-links .admin {
+      background: #1F6FEB; /* Blue */
+      border: 2px solid #1F6FEB;
+    }
+
+    .nav-links .admin:hover {
+      background: #3B82F6;
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #58A6FF, #D2A8FF);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #8B949E;
+      max-width: 700px;
+      margin-top: 15px;
+    }
+
+    .hero .cta {
+      margin-top: 30px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .cta a {
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .cta .student {
+      background: #238636;
+      color: #fff;
+    }
+
+    .cta .student:hover {
+      background: #2EA043;
+    }
+
+    .cta .admin {
+      background: #1F6FEB;
+      color: #fff;
+    }
+
+    .cta .admin:hover {
+      background: #3B82F6;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 80px 50px;
+      text-align: center;
+    }
+
+    .features h3 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #58A6FF;
+    }
+
+    .features-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .feature-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 10px;
+      transition: 0.4s ease;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0px 10px 25px rgba(255, 255, 255, 0.2);
+    }
+
+    .feature-box:before {
+      content: "🚀";
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      font-size: 6rem;
+      opacity: 0.1;
+    }
+
+    .feature-box p {
+      font-size: 1rem;
+      color: #E6EDF3;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(13, 17, 23, 0.95);
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #8B949E;
+    }
+
+    footer a {
+      color: #58A6FF;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #D2A8FF;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        margin-top: 10px;
+      }
+
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+
+      .features-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Permission System</h1>
+    <div class="nav-links">
+      <a href="http://localhost:3000/login" class="student">Student</a>
+      <a href="http://localhost:3000/mlogin" class="admin">Admin</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h2>Effortless Permission Management</h2>
+    <p>A seamless solution for students and faculty to manage permissions and leave requests effectively.</p>
+   
+  </section>
+
+  <section class="features">
+    <h3>Key Features</h3>
+    <div class="features-container">
+      <div class="feature-box"><p>📜 Easy leave application process</p></div>
+      <div class="feature-box"><p>📊 Real-time request tracking</p></div>
+      <div class="feature-box"><p>👨‍🏫 Faculty can manage student permissions</p></div>
+      <div class="feature-box"><p>🔐 Secure authentication system</p></div>
+      <div class="feature-box"><p>📱 Mobile-friendly design</p></div>
+      <div class="feature-box"><p>⏳ Fast approval workflow</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2024 Vishnu Institute of Technology. Built with ❤️ by <a href="#">Your Team</a>.</p>
+  </footer>
+
+</body>
+</html>

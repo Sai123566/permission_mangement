@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0F2027, #203A43, #2C5364); /* Cool Dark Blue Gradient */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #E0E0E0;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 90%;
+            padding: 25px;
+            text-align: center;
+            background: rgba(25, 50, 75, 0.4);
+            backdrop-filter: blur(15px);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #B0E0E6; /* Light Cyan */
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #DDEEFF;
+            text-align: left;
+        }
+
+        input {
+            width: calc(100% - 20px); /* Adjust width to fit container */
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #E0F7FA;
+            font-size: 1em;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 2px 6px rgba(0, 0, 50, 0.2);
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(80, 200, 255, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #00C6FF, #0072FF);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 114, 255, 0.3);
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #0072FF, #00C6FF);
+            box-shadow: 0 6px 12px rgba(0, 114, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .error {
+            color: #FF4D4D; /* Red Error Message */
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Register</h1>
+
+        <% if (errorMessage) { %>
+            <p class="error"><%= errorMessage %></p>
+        <% } %>
+
+        <form action="/register" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

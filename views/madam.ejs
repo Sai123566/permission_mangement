@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madam Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background-color: #1f2937;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header:hover .dropdown {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+    <!-- Navbar -->
+    <div class="flex justify-between items-center p-4 bg-gray-800 shadow-lg relative">
+        <h2 class="text-xl font-bold">Admin Dashboard</h2>
+        <div class="flex items-center space-x-4">
+            <div class="relative header flex items-center space-x-2 cursor-pointer">
+                <div class="text-xl">👤</div>
+                <span><%= email %></span>
+                <div class="dropdown absolute right-0 mt-2 p-4 bg-gray-800 rounded-lg shadow-lg">
+                    <p><strong>Name:</strong> <%= email %></p>
+                    <button onclick="window.location.href='/'" class="mt-2 bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg text-white">Logout</button>
+                </div>
+            </div>
+            <button onclick="window.location.href='/register'" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg text-white">Add User</button>
+        </div>
+    </div>
+    
+    <!-- Leave Requests Section -->
+    <div class="container mx-auto mt-6 p-6">
+        <h3 class="text-2xl font-semibold mb-4">Leave Requests</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% if (leaveRequests.length > 0) { %>
+                <% leaveRequests.forEach(request => { %>
+                    <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
+                        <p><strong>Name:</strong> <%= request.name %></p>
+                        <p><strong>ID:</strong> <%= request.id %></p>
+                        <p><strong>Email:</strong> <%= request.email %></p>
+                        <p><strong>Section:</strong> <%= request.section %></p>
+                        <p><strong>Branch:</strong> <%= request.branch %></p>
+                        <p><strong>Year:</strong> <%= request.year %></p>
+                        <p><strong>Date:</strong> <%= request.fromDate %> to <%= request.toDate%></p>
+                        <p><strong>Reason for Leave:</strong> <%= request.reason %></p>
+                        <form action="/madam" method="POST" class="mt-4">
+                            <input type="hidden" name="docId" value="<%= request.docId %>">
+                            <button type="submit" name="value" value="agree" class="bg-green-500 px-4 py-2 rounded-md text-white hover:bg-green-600">Agree</button>
+                            <button type="submit" name="value" value="reject" class="bg-red-500 px-4 py-2 rounded-md text-white hover:bg-red-600 ml-2">Reject</button>
+                        </form>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="text-gray-400">No pending leave requests.</p>
+            <% } %>
+        </div>
+    </div>
+    
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
