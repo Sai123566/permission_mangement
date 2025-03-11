@@ -7,7 +7,7 @@ const axios = require('axios'); // Import axios for API requests
 
 const app = express();
 
-const serviceAccount = JSON.parse(Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, 'base64').toString('utf-8'));
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
 
 
