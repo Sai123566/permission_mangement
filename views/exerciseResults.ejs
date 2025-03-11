@@ -210,6 +210,13 @@
 
             <button type="submit">Submit Leave Request</button>
         </form>
+  <% if (year === null) { %>
+          <p>Your leave request is pending...</p>
+        <% } else if (year === true) { %>
+          <p>Your leave request has been approved!</p>
+        <% } else { %>
+          <p>Your leave request has been rejected.</p>
+        <% } %>
     </div>
 </body>
 </html>
