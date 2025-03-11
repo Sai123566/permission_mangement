@@ -7,7 +7,8 @@ const axios = require('axios'); // Import axios for API requests
 
 const app = express();
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+const serviceAccount = require("./serviceAccountKey.json");
+
 
 
 
